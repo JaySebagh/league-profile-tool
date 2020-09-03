@@ -1,7 +1,4 @@
 var imgButtons = document.querySelectorAll(".sumIcon");
-var text = document.querySelector("#iconText");
-var iconButton = document.querySelector("#iconCode");
-var lolNames = document.querySelector("#lolNames");
 var iconCode = {
   profileIconId: 0,
 };
@@ -20,18 +17,3 @@ for (let i = 0; i < imgButtons.length; i++) {
     LeagueClient.requestPresetIcon(iconCode);
   });
 }
-iconButton.addEventListener("mousedown", function () {
-  let value = parseInt(text.value);
-  if (!isNaN(value) && !(value < 0)) {
-    anyIcon["icon"] = value;
-    LeagueClient.requestAnyIcon(anyIcon);
-  } else {
-    dialog.showErrorBox("Error", "Not a valid icon code");
-  }
-});
-lolNames.addEventListener("mousedown", function (e) {
-  e.preventDefault();
-  require("electron").shell.openExternal(
-    "https://lolnames.gg/en/statistics/icons/"
-  );
-});
